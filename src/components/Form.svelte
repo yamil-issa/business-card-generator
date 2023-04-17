@@ -1,45 +1,47 @@
 <script>
-    import {dataInputs} from "../utils/store.js";
+    import {createEventDispatcher} from "svelte";
 
-    let values;
+    export let defaultValues;
+    let values = defaultValues;
 
-    dataInputs.subscribe(value => {
-        values = value;
-    })
-
-    // On any change in values, update the store
+    const dispatch = createEventDispatcher();
+    // On any change in values, emit an event
     $: {
-        dataInputs.update(_ => values)
+        dispatch("change", values);
     }
 
     function addFile(event) {
         const file = event.target.files[0];
+        if (!file) {
+            return;
+        }
+
+        console.log(file);
+
+        // Max = 2Mb
+        const MAX_SIZE = 2097152;
+        if (file.size > MAX_SIZE) {
+            alert("The file is too big! Max size is 2Mb");
+            return;
+        }
+
+        // File is png or jpg/jpeg
+        const MIME_TYPES = ["image/png", "image/jpg", "image/jpeg"];
+        if (!MIME_TYPES.includes(file.type)) {
+            alert("This file type is not supported!");
+            return;
+        }
+
         const reader = new FileReader();
         reader.readAsBinaryString(file);
 
         reader.onload = () => {
-            const signatures = {
-                JVBERi0: "application/pdf",
-                R0lGODdh: "image/gif",
-                R0lGODlh: "image/gif",
-                iVBORw0KGgo: "image/png",
-                "/9j/": "image/jpg"
-            };
-
-            function detectMimeType(b64) {
-                for (const s in signatures) {
-                    if (b64.indexOf(s) === 0) {
-                        return signatures[s];
-                    }
-                }
-            }
-
             const base64 = btoa(String(reader.result));
             values.logo.path = file.name;
-            values.logo.base64 = `data:${detectMimeType(base64)};base64,${base64}`;
+            values.logo.base64 = `data:${file.type.split("/")[1]};base64,${base64}`;
         };
         reader.onerror = () => {
-            alert("TODO mais problème")
+            alert("An error occurred while reading the file!");
         };
     }
 </script>
@@ -52,10 +54,6 @@
     <div>
         <label for="lastName">Last name</label>
         <input type="text" id="lastName" bind:value={values.lastName}/>
-    </div>
-    <div>
-        <label for="age">Age</label>
-        <input type="number" id="age" bind:value={values.age}/>
     </div>
     <div>
         <label for="street">Street</label>
@@ -87,7 +85,7 @@
     </div>
     <div>
         <label for="logo">Logo</label>
-        <input type="file" id="logo" on:change={addFile}/>
+        <input type="file" accept="image/png, image/jpeg, image/jpg" id="logo" on:change={addFile}/>
     </div>
     <div>
         <button type="submit">Submit</button>
