@@ -1,7 +1,11 @@
-// TODO Add more templates in components\templates and here
+/**
+ * TODO Add more templates in components\templates and here
+ * First one will be the default one
+ * @type { {fileName: string, description: string}[] }
+ */
 const templates = [
-    {name: "Classic but effective", value: "default"},
-    {name: "Energetic yet subtile", value: "1"}
+    {fileName: "default", description: "Classic but effective"},
+    {fileName: "1", description: "Energetic yet subtile"}
 ];
 
 export default templates;

@@ -5,7 +5,7 @@
     const STORAGE_KEY = "values";
 
     // Get values from localStorage or use default values
-    const defaultValues = localStorage.getItem(STORAGE_KEY) ? JSON.parse(localStorage.getItem(STORAGE_KEY)) : {
+    let values = localStorage.getItem(STORAGE_KEY) ? JSON.parse(localStorage.getItem(STORAGE_KEY)) : {
         firstName: "toto",
         lastName: "tata",
         address: {
@@ -25,17 +25,16 @@
         }
     };
 
-    let values = defaultValues;
-
-    // Save values in localStorage
+    // Save values in localStorage on change
     $: {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(values));
     }
-
 </script>
 
 <main class="mainContainer">
-    <Form defaultValues={defaultValues} on:change={e => values = e.detail}/>
+    <!--  Read and write  -->
+    <Form bind:values/>
+    <!--  Read only  -->
     <Viewer values={values}/>
 </main>
 

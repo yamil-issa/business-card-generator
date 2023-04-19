@@ -1,22 +1,11 @@
 <script>
-    import {createEventDispatcher} from "svelte";
-
-    export let defaultValues;
-    let values = defaultValues;
-
-    const dispatch = createEventDispatcher();
-    // On any change in values, emit an event
-    $: {
-        dispatch("change", values);
-    }
+    export let values;
 
     function addFile(event) {
         const file = event.target.files[0];
         if (!file) {
             return;
         }
-
-        console.log(file);
 
         // Max = 2Mb
         const MAX_SIZE = 2097152;

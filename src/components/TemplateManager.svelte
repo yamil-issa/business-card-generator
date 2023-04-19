@@ -1,26 +1,27 @@
 <script>
-    const DEFAULT_TEMPLATE = 'default';
+    import {createEventDispatcher} from "svelte";
 
     export let values;
-    export let template;
+    export let templateComponent;
+    export let paletteIndex = 0;
 
-    let Comp;
 
+    let component;
+    const dispatch = createEventDispatcher();
     $: {
-        const promise = import(`./templates/${template}.svelte`);
-        promise.then(module => {
-            Comp = module.default;
-        }).catch(() => {
-            const promise2 = import(`./templates/${DEFAULT_TEMPLATE}.svelte`);
-            promise2.then(module => {
-                Comp = module.default;
-            });
-        });
+        if (component) {
+            // Send event loadComponent
+            if (!component.palettes) {
+                alert('No colors found in component');
+            } else {
+                dispatch('loadComponent', component.palettes);
+            }
+        }
     }
 </script>
 
 <div class="templateContainer">
-    <svelte:component this={Comp} values={values}/>
+    <svelte:component bind:this={component} this={templateComponent} paletteIndex={paletteIndex} values={values}/>
 </div>
 
 <style>

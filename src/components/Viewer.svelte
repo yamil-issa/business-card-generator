@@ -1,22 +1,17 @@
 <script>
     import TemplateManager from "./TemplateManager.svelte";
-    import templates from "../utils/templates.js";
-
-    const STORAGE_KEY = "template";
+    import TemplatePicker from "./TemplatePicker.svelte";
+    import TemplateColor from "./TemplateColor.svelte";
 
     export let values;
 
-    let findIndex = templates.findIndex(t => t.value === localStorage.getItem(STORAGE_KEY));
-    let index = localStorage.getItem(STORAGE_KEY) && findIndex !== -1 ? findIndex : 0;
-
-    let template;
-    $: {
-        template = templates[index].value;
-        localStorage.setItem(STORAGE_KEY, template);
-    }
+    let templateComponent;
+    let templateColors;
+    let paletteIndex;
 </script>
 
 <div>
-    <TemplateManager values={values} template={template}/>
-    <button on:click={() => index = (index + 1) % templates.length}>Change template</button>
+    <TemplateColor templateColors={templateColors} bind:paletteIndex/>
+    <TemplateManager values={values} templateComponent={templateComponent} paletteIndex={paletteIndex} on:loadComponent={e => templateColors = e.detail}/>
+    <TemplatePicker bind:templateComponent={templateComponent}/>
 </div>
