@@ -22,3 +22,9 @@
     {/if}
     <p>Palette choisie: {JSON.stringify(palette)}</p>
 </div>
+
+<style>
+    img {
+        width: 20rem;
+    }
+</style>

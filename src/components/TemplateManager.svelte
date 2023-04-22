@@ -19,26 +19,29 @@
             }
         }
     }
+
+    let flipped = false;
 </script>
 
-<div class="templateContainer">
-    <svelte:component bind:this={component} this={templateComponent} {paletteIndex} {values}/>
+<div>
+    <div class="templateContainer" class:flipped>
+        <svelte:component bind:this={component} this={templateComponent} {paletteIndex} {values}/>
+    </div>
+    <button on:click={() => flipped = !flipped}>Flip {flipped ? "🔒" : "🔓"}</button>
 </div>
 
-<style>
+<style lang="scss">
     .templateContainer {
         width: 26.5rem;
         background: transparent;
         perspective: 1000px;
-    }
+        margin: 1rem;
 
-    .templateContainer:hover :global(.cardContainer) {
-        transform: rotateY(180deg);
-    }
-
-    .templateContainer :global(img) {
-        max-width: 50%;
-        object-fit: cover;
+      &:hover, &.flipped {
+        :global(.cardContainer) {
+            transform: rotateY(180deg);
+        }
+      }
     }
 
     :global(.cardContainer) {
