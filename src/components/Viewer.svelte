@@ -10,8 +10,20 @@
     let paletteIndex;
 </script>
 
-<div>
-    <TemplateColor templateColors={templateColors} bind:paletteIndex/>
-    <TemplateManager values={values} templateComponent={templateComponent} paletteIndex={paletteIndex} on:loadComponent={e => templateColors = e.detail}/>
-    <TemplatePicker bind:templateComponent={templateComponent}/>
+<div class="viewerContainer">
+    <TemplateColor {templateColors} bind:paletteIndex/>
+    <TemplateManager {values} {templateComponent} bind:paletteIndex on:loadComponent={e => templateColors = e.detail}/>
+    <TemplatePicker bind:templateComponent/>
 </div>
+
+<style>
+    .viewerContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        height: 100%;
+        width: 100%;
+    }
+</style>
