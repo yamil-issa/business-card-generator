@@ -43,28 +43,4 @@
         }
       }
     }
-
-    :global(.cardContainer) {
-        position: relative;
-        aspect-ratio: 8.5/5.4;
-        transition: transform 0.6s;
-        transform-style: preserve-3d;
-    }
-
-    :global(.cardSide) {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        height: 100%;
-        border-radius: 1rem;
-        overflow: hidden;
-
-        position: absolute;
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
-    }
-
-    :global(.cardSide--back) {
-        transform: rotateY(180deg);
-    }
 </style>

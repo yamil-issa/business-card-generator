@@ -9,6 +9,8 @@
     // You can add as many palettes as you want and name the colors as you like.
     // The colors are in hexadecimal format.
     // Only the first two colors of each palette will be shown in the palette picker.
+    import BaseTemplate from "../BaseTemplate.svelte";
+
     export const palettes = [{
         contrast: '#303e48',
         background: '#64b5e5'
@@ -17,42 +19,40 @@
         secondary: '#06fafa'
     }];
 
-    // paletteIndex is the index of the palette to use given by the palette picker.
+    // // paletteIndex is the index of the palette to use given by the palette picker.
     export let paletteIndex = 0;
-
-    // palette is the selected palette. It is automatically updated when paletteIndex changes.
-    $: palette = palettes[paletteIndex];
-
-    // values is an object containing the values of the form.
+    //
+    // // palette is the selected palette. It is automatically updated when paletteIndex changes.
+    // $: palette = palettes[paletteIndex];
+    //
+    // // values is an object containing the values of the form.
     export let values;
 </script>
 
 <!-- HERE IS THE BASIC TEMPLATE REQUIRED -->
-<!--<div class="cardContainer"-->
-<!--     style:--primary={Object.values(palette)[0]}-->
-<!--     style:--secondary={Object.values(palette)[1]}-->
-<!--&gt;-->
-<!--    <div class="cardSide cardSide--front"></div>-->
-<!--    <div class="cardSide cardSide--back"></div>-->
-<!--</div>-->
+<!-- There is a placeholder if you let BaseTemplateEmpty -->
+<!--<BaseTemplate {palettes} {paletteIndex}>
+    <div slot="front">
+    </div>
+    <div slot="back">
+    </div>
+</BaseTemplate>-->
 
-<div class="cardContainer" data-palette={paletteIndex}
-     style:--primary={Object.values(palette)[0]}
-     style:--secondary={Object.values(palette)[1]}
->
-    <div class="cardSide cardSide--front">
+
+<BaseTemplate {palettes} {paletteIndex}>
+    <div class="cardFront" slot="front">
         <div class="topPart">
             <div class="topPart__container">
                 <div class="topPart__text">
                     <h2>île<span>de</span>France</h2>
                     <span>mobilités</span>
                 </div>
-                <div class="topPart__icon"><img src="/example.svg" alt="logo"></div>
+                <div class="topPart__icon"><img src="/example.svg" alt="logo idf mobilités"></div>
             </div>
         </div>
         <p class="indication">Hover to flip</p>
     </div>
-    <div class="cardSide cardSide--back">
+    <div class="cardBack" slot="back">
         <div class="topPart">
             <div class="topPart__container"></div>
         </div>
@@ -60,34 +60,30 @@
             <span style="text-transform: capitalize">{values.firstName}</span>
             <span style="text-transform: uppercase">{values.lastName}</span>
             <span>{values.contact.phone}</span>
-            <p class="bottomPart__content">
-                Votre passe Navigo est strictement personnel et doit être validé sur les appareils de validation
-                rencontrés au cours du voyage. Les conditions générales d'utilisation du passe et des forfaits sont
-                disponibles auprès des transporteurs.
-            </p>
+            <img src="{values.logo.base64}" alt="logo"/>
         </div>
     </div>
-</div>
+</BaseTemplate>
 
 <!-- You can use SCSS by adding lang="scss" -->
 <style lang="scss">
   @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
 
-  .cardSide {
-    &--front, &--back {
-      background-color: var(--secondary);
-      color: white;
-      font-family: Raleway, sans-serif;
-    }
+  // This will allow you to have a different style for each palette.
+  // Here, the second palette will have a different color (for better text contrast).
+  :global(.cardContainer[data-palette="1"]) .indication {
+    color: var(--primary);
+  }
+
+  .cardFront, .cardBack {
+    background-color: var(--secondary);
+    color: white;
+    font-family: Raleway, sans-serif;
   }
 
   .indication {
     font-size: 4rem;
-    margin: 1.2rem 0 0;
-  }
-
-  .cardContainer[data-palette="1"] .indication {
-    color: var(--primary);
+    margin: 1.75rem 0 0;
   }
 
   .topPart {
@@ -150,8 +146,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 100%;
     padding: 1rem;
+    margin-left: 1rem;
 
     writing-mode: vertical-rl;
     transform: rotate(180deg);
@@ -163,9 +159,11 @@
       font-weight: bold;
     }
 
-    &__content {
-      margin-right: 2rem;
-      font-size: .75rem;
+    img {
+      object-fit: contain;
+      width: 15rem;
+      transform: rotate(180deg);
+      padding-left: 1rem;
     }
   }
 </style>
