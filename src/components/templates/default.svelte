@@ -15,7 +15,7 @@
     export let values;
 </script>
 
-<BaseTemplate {palettes} {paletteIndex}>
+<BaseTemplate {paletteIndex} {palettes}>
     <div slot="front">
         <h2>Template par défaut</h2>
         <p>{values.firstName}</p>
@@ -24,7 +24,7 @@
         {/if}
     </div>
     <div slot="back">
-        <img src="https://svelte.dev/tutorial/image.gif" alt="Rick Roll">
+        <img alt="Rick Roll" src="https://svelte.dev/tutorial/image.gif">
     </div>
 </BaseTemplate>
 

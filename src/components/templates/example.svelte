@@ -30,7 +30,7 @@
 </script>
 
 <!-- HERE IS THE BASIC TEMPLATE REQUIRED -->
-<!-- There is a placeholder if you let BaseTemplateEmpty -->
+<!-- There is a placeholder if you let BaseTemplate empty -->
 <!--<BaseTemplate {palettes} {paletteIndex}>
     <div slot="front">
     </div>
@@ -38,8 +38,7 @@
     </div>
 </BaseTemplate>-->
 
-
-<BaseTemplate {palettes} {paletteIndex}>
+<BaseTemplate {paletteIndex} {palettes}>
     <div class="cardFront" slot="front">
         <div class="topPart">
             <div class="topPart__container">
@@ -47,7 +46,7 @@
                     <h2>île<span>de</span>France</h2>
                     <span>mobilités</span>
                 </div>
-                <div class="topPart__icon"><img src="/example.svg" alt="logo idf mobilités"></div>
+                <div class="topPart__icon"><img alt="logo idf mobilités" src="/example.svg"></div>
             </div>
         </div>
         <p class="indication">Hover to flip</p>
@@ -60,7 +59,7 @@
             <span style="text-transform: capitalize">{values.firstName}</span>
             <span style="text-transform: uppercase">{values.lastName}</span>
             <span>{values.contact.phone}</span>
-            <img src="{values.logo.base64}" alt="logo"/>
+            <img alt="logo" src="{values.logo.base64}"/>
         </div>
     </div>
 </BaseTemplate>

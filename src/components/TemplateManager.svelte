@@ -25,22 +25,22 @@
 
 <div>
     <div class="templateContainer" class:flipped>
-        <svelte:component bind:this={component} this={templateComponent} {paletteIndex} {values}/>
+        <svelte:component bind:this={component} {paletteIndex} this={templateComponent} {values}/>
     </div>
     <button on:click={() => flipped = !flipped}>Flip {flipped ? "🔒" : "🔓"}</button>
 </div>
 
 <style lang="scss">
-    .templateContainer {
-        width: 26.5rem;
-        background: transparent;
-        perspective: 1000px;
-        margin: 1rem;
+  .templateContainer {
+    width: 26.5rem;
+    background: transparent;
+    perspective: 1000px;
+    margin: 1rem;
 
-      &:hover, &.flipped {
-        :global(.cardContainer) {
-            transform: rotateY(180deg);
-        }
+    &:hover, &.flipped {
+      :global(.cardContainer) {
+        transform: rotateY(180deg);
       }
     }
+  }
 </style>

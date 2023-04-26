@@ -1,7 +1,4 @@
 <script>
-
-    import {onMount} from "svelte";
-
     export let palettes;
     export let paletteIndex = 0;
     $: palette = palettes[paletteIndex];
@@ -9,16 +6,14 @@
     let card;
     $: {
         if (card) {
-           ["primary", "secondary", "tertiary"].forEach((color, i) => {
-               card.style.setProperty(`--${color}`, Object.values(palette)[i]);
-           });
+            ["primary", "secondary", "tertiary"].forEach((color, i) => {
+                card.style.setProperty(`--${color}`, Object.values(palette)[i]);
+            });
         }
     }
 </script>
 
-<div class="cardContainer" bind:this={card}
-     data-palette={paletteIndex}
->
+<div bind:this={card} class="cardContainer" data-palette={paletteIndex}>
     <div>
         <slot name="front">
             <div class="placeholder">

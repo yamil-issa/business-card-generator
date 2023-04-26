@@ -13,7 +13,7 @@
     export let values;
 </script>
 
-<BaseTemplate {palettes} {paletteIndex}>
+<BaseTemplate {paletteIndex} {palettes}>
     <div slot="front">
         <h2>Autre template</h2>
         <p>Adresse: {JSON.stringify(values.address)}</p>

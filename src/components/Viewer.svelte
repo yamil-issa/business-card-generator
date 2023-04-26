@@ -11,8 +11,8 @@
 </script>
 
 <div class="viewerContainer">
-    <TemplateColor {templateColors} bind:paletteIndex/>
-    <TemplateManager {values} {templateComponent} bind:paletteIndex on:loadComponent={e => templateColors = e.detail}/>
+    <TemplateColor bind:paletteIndex {templateColors}/>
+    <TemplateManager bind:paletteIndex on:loadComponent={e => templateColors = e.detail} {templateComponent} {values}/>
     <TemplatePicker bind:templateComponent/>
 </div>
 

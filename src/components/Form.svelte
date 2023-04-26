@@ -38,43 +38,43 @@
 <form on:submit|preventDefault>
     <div>
         <label for="firstName">First name</label>
-        <input type="text" id="firstName" bind:value={values.firstName}/>
+        <input bind:value={values.firstName} id="firstName" type="text"/>
     </div>
     <div>
         <label for="lastName">Last name</label>
-        <input type="text" id="lastName" bind:value={values.lastName}/>
+        <input bind:value={values.lastName} id="lastName" type="text"/>
     </div>
     <div>
         <label for="street">Street</label>
-        <input type="text" id="street" bind:value={values.address.street}/>
+        <input bind:value={values.address.street} id="street" type="text"/>
     </div>
     <div>
         <label for="city">City</label>
-        <input type="text" id="city" bind:value={values.address.city}/>
+        <input bind:value={values.address.city} id="city" type="text"/>
     </div>
     <div>
         <label for="zip">Zip</label>
-        <input type="text" id="zip" bind:value={values.address.zip}/>
+        <input bind:value={values.address.zip} id="zip" type="text"/>
     </div>
     <div>
         <label for="job">Job</label>
-        <input type="text" id="job" bind:value={values.job}/>
+        <input bind:value={values.job} id="job" type="text"/>
     </div>
     <div>
         <label for="website">Website</label>
-        <input type="url" id="website" bind:value={values.website}/>
+        <input bind:value={values.website} id="website" type="url"/>
     </div>
     <div>
         <label for="email">Email</label>
-        <input type="email" id="email" bind:value={values.contact.email}/>
+        <input bind:value={values.contact.email} id="email" type="email"/>
     </div>
     <div>
         <label for="phone">Phone</label>
-        <input type="tel" id="phone" bind:value={values.contact.phone}/>
+        <input bind:value={values.contact.phone} id="phone" type="tel"/>
     </div>
     <div>
         <label for="logo">Logo</label>
-        <input type="file" accept="image/png, image/jpeg, image/jpg" id="logo" on:change={addFile}/>
+        <input accept="image/png, image/jpeg, image/jpg" id="logo" on:change={addFile} type="file"/>
     </div>
     <div>
         <button type="submit">Submit</button>
