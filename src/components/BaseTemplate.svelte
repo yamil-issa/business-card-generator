@@ -15,14 +15,14 @@
 </script>
 
 <div bind:this={card} class="cardContainer" data-palette={paletteIndex}>
-	<div class="cardContainer__side cardContainer__side--front">
+	<div id="front" class="cardContainer__side cardContainer__side--front">
 		<slot name="front">
 			<div class="cardContainer__placeholder">
 				<h2>Card Front</h2>
 			</div>
 		</slot>
 	</div>
-	<div class="cardContainer__side cardContainer__side--back">
+	<div id="back" class="cardContainer__side cardContainer__side--back">
 		<slot name="back">
 			<div class="cardContainer__placeholder">
 				<h2>Card Back</h2>
