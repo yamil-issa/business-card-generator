@@ -11,19 +11,21 @@
 </script>
 
 <div class="viewerContainer">
+	<h2 class="viewerContainer__title">Card Preview</h2>
 	<TemplateColor bind:paletteIndex {templateColors}/>
 	<TemplateManager bind:paletteIndex on:loadComponent={e => templateColors = e.detail} {templateComponent} {values}/>
 	<TemplatePicker bind:templateComponent/>
 </div>
 
-<style>
+<style lang="scss">
 	.viewerContainer {
-		display: flex;
-		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		gap: 1rem;
-		height: 100%;
 		width: 100%;
+
+		&__title {
+			margin: 0;
+			text-align: center;
+		}
 	}
 </style>

@@ -8,16 +8,20 @@
 	// ALL THE VARIABLES AND IMPORTS HERE ARE NEEDED BY THE TEMPLATE AND CAN'T BE OMITTED
 	import BaseTemplate from "../BaseTemplate.svelte";
 
-	// palettes is an array of object. Each object is a palette.
-	// You can add as many palettes as you want and name the colors as you like.
-	// The colors are in hexadecimal format.
-	// Only the first two colors of each palette will be shown in the palette picker.
+	/**
+	 * palettes is an array of colors. Each object is a palette.
+	 * You can add as many palettes as you want.
+	 * Any color format recognized by CSS is accepted.
+	 * @type {{background: string, text: string, shapes: string[]}[]}
+	 */
 	export const palettes = [{
-		contrast: '#303e48',
-		background: '#64b5e5'
+		background: "#64b5e5",
+		text: "white",
+		shapes: ["#303e48"]
 	}, {
-		primary: '#4b084b',
-		secondary: '#06fafa'
+		background: "#4b084b",
+		text: "white",
+		shapes: ["#51E5FF"]
 	}];
 
 	// paletteIndex is the index of the palette to use given by the palette picker.
@@ -69,12 +73,12 @@
 	// This will allow you to have a different style for each palette.
 	// Here, the second palette will have a different color (for better text contrast).
 	:global(.cardContainer[data-palette="1"]) .indication {
-		color: var(--primary);
+		text-decoration: underline;
 	}
 
 	.cardFront, .cardBack {
-		background-color: var(--secondary);
-		color: white;
+		background-color: var(--background);
+		color:var(--text);
 		font-family: Raleway, sans-serif;
 	}
 
@@ -86,8 +90,9 @@
 	.topPart {
 		display: flex;
 		width: 100%;
-		background: var(--primary);
-		color: var(--secondary);
+		background: var(--shape1);
+		color: var(--background);
+		padding-bottom: .2rem;
 
 		h2 {
 			font-size: 2.5rem;
@@ -104,14 +109,13 @@
 
 		span {
 			font-size: 1.8rem;
-			color: white;
+			color: var(--text);
 		}
 
 		&__container {
 			display: flex;
 			column-gap: .2rem;
-			align-items: flex-start;
-			padding-top: 1.5rem;
+			padding-top: 1rem;
 			padding-bottom: .5rem;
 			margin: 0 auto;
 			height: 5rem;
@@ -123,7 +127,7 @@
 		}
 
 		&__icon {
-			background: var(--secondary);
+			background: var(--background);
 			border-radius: .75rem;
 			height: 3.25rem;
 			padding: .2rem;
@@ -148,7 +152,7 @@
 
 		writing-mode: vertical-rl;
 		transform: rotate(180deg);
-		color: black;
+		color: var(--text);
 		text-align: end;
 		line-height: 1rem;
 

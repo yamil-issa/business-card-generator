@@ -5,17 +5,17 @@
 
 	const STORAGE_KEY = "values";
 
-	// TODO Supprimer les valeurs par défaut ?
 	// Get values from localStorage or use default values
 	let values = localStorage.getItem(STORAGE_KEY) ? JSON.parse(localStorage.getItem(STORAGE_KEY)) : {
-		firstName: "toto",
-		lastName: "tata",
+		title: "None",
+		firstName: "John",
+		lastName: "Doe",
 		address: {
-			street: "rue de la paix",
+			street: "42 rue de la paix",
 			city: "Paris",
 			zip: "75000"
 		},
-		job: "développeur",
+		job: "Developer",
 		website: "https://www.google.fr",
 		contact: {
 			email: "email@example.com",
@@ -47,8 +47,23 @@
 		justify-content: space-between;
 		align-items: center;
 
+		height: 100%;
+		padding: 1rem;
+		gap: 1rem;
+
 		> :global(*) {
-			width: 50%;
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+			padding: 1rem;
+			box-sizing: border-box;
+			height: 100%;
+			background-color: #4f4f4f;
+			border-radius: 5px;
+
+			@media (prefers-color-scheme: light) {
+				background-color: #eee;
+			}
 		}
 	}
 </style>

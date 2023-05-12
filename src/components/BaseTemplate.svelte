@@ -1,15 +1,23 @@
 <script>
 	export let palettes;
 	export let paletteIndex = 0;
+
 	$: palette = palettes[paletteIndex];
 
 	let card;
 	$: {
 		if (card) {
 			// Create CSS variables for each color in the palette and set them on the card
-			["primary", "secondary", "tertiary"].forEach((color, i) => {
-				card.style.setProperty(`--${color}`, Object.values(palette)[i]);
-			});
+			for (const [key, value] of Object.entries(palette)) {
+				if (key === "shapes") {
+					for (let i = 0; i < value.length; i++) {
+						card.style.setProperty(`--shape${i + 1}`, value[i]);
+					}
+				} else {
+					card.style.setProperty(`--${key}`, value);
+				}
+
+			}
 		}
 	}
 </script>
@@ -37,6 +45,7 @@
 		aspect-ratio: 8.5/5.4;
 		transition: transform 0.6s;
 		transform-style: preserve-3d;
+		text-align: center;
 		backface-visibility: hidden;
 		-webkit-backface-visibility: hidden;
 

@@ -22,14 +22,23 @@
 	let flipped = false;
 </script>
 
-<div>
+<div class="templateManager">
 	<div class="templateContainer" class:flipped>
 		<svelte:component bind:this={component} {paletteIndex} this={templateComponent} {values}/>
 	</div>
-	<button on:click={() => flipped = !flipped}>Flip {flipped ? "🔒" : "🔓"}</button>
+	<button on:click={() => flipped = !flipped}>* click to {flipped ? "unflip" : "flip"}! *</button>
 </div>
 
 <style lang="scss">
+	.templateManager {
+		display: flex;
+		flex-direction: column;
+
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+	}
+
 	.templateContainer {
 		width: 26.5rem;
 		background: transparent;

@@ -1,5 +1,6 @@
 <script>
 	export let templateColors;
+
 	export let paletteIndex;
 </script>
 
@@ -8,40 +9,49 @@
 		{#each templateColors as colors, i}
 			<button on:click={() => paletteIndex = i}>
 				<span class="bubble">
-					<!-- Only show the first two colors of the palette -->
-					{#each Object.entries(colors).splice(0, 2) as [_, value] }
-						<span class="color" style:background-color={value}></span>
-					{/each}
+					<span style:background-color={colors.background}></span>
+					<span style:background-color={colors.shapes[0]}></span>
 				</span>
 			</button>
 		{/each}
 	</div>
 {/if}
 
-<style>
+<style lang="scss">
 	.colorPickerContainer {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
 		align-items: center;
-		max-width: 100%;
-		gap: 1rem;
-	}
 
-	.bubble {
-		border-radius: 50%;
-		background-color: #fff;
-		aspect-ratio: 1;
-		overflow: hidden;
-		transform: rotate(-45deg);
-	}
+		width: 100%;
+		gap: 2rem;
+		padding: .5rem;
+		box-sizing: border-box;
 
-	.color {
-		aspect-ratio: 1/2;
-	}
+		border-radius: inherit;
+		background-color: #2b2b2b;
 
-	.bubble, .color {
-		display: inline-block;
-		height: 2rem;
+		@media (prefers-color-scheme: light) {
+			background-color: #dddddd;
+		}
+
+		button {
+			display: inline-block;
+			padding: 0;
+			border-radius: 50%;
+			overflow: hidden;
+		}
+
+		.bubble {
+			display: flex;
+			aspect-ratio: 1;
+			transform: rotate(-45deg);
+			height: 3rem;
+
+			& > span {
+				flex: 1;
+			}
+		}
 	}
 </style>
