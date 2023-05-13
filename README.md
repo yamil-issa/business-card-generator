@@ -1,6 +1,6 @@
 # Business Card Generator App
 
-This is a Svelte application that generates a business card based on user input, the user can choose from four different models, once you have created you business card you can download it as a PDF file. The app consists of three main components:
+This is a Svelte application that generates a business card based on user input. The app consists of three main components:
 
 - `baseTemplate`: This component is responsible for rendering the card container with a front and back side. It receives a `palettes` prop, an array of color palettes to choose from, and a `paletteIndex` prop, an integer that determines which palette to use. The component uses the selected palette to set the card's background colors and also has a placeholder for the card's front and back content.
 
@@ -17,7 +17,7 @@ To use this application, follow these steps:
 3. Run `npm run dev` to start the development server.
 4. Open a browser and navigate to http://localhost:5173 to view the app.
 
-Once the app is running, you can select a color palette by clicking on the color picker, fill out the form with your business card information, and upload a logo if desired. The app will generate a preview of your business card in real-time as you fill out the form.
+Once the app is running, you can choose from four different models and you can select a color palette by clicking on the color picker, fill out the form with your business card information, and upload a logo if desired. The app will generate a preview of your business card in real-time as you fill out the form. Once you have created you business card you can download it as a PDF file
 
 
 
