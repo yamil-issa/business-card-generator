@@ -51,6 +51,7 @@
 		padding: 1rem;
 		gap: 1rem;
 
+
 		> :global(*) {
 			display: flex;
 			flex-direction: column;

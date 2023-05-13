@@ -25,7 +25,7 @@
 		align-items: center;
 
 		width: 100%;
-		gap: 2rem;
+		gap: 5rem;
 		padding: .5rem;
 		box-sizing: border-box;
 

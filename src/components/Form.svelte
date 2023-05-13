@@ -1,8 +1,6 @@
 <script>
 	export let values;
 
-	const titles = ["Mr.", "Ms.", "None"];
-
 	function addFile(event) {
 		const file = event.target.files[0];
 		if (!file) {
@@ -42,12 +40,18 @@
 	<div class="formContainer__section">
 		<span>Title</span>
 		<div role="radiogroup">
-			{#each titles as title}
-				<label>
-					{title}
-					<input bind:group={values.title} type="radio" value={title}/>
-				</label>
-			{/each}
+			<label>
+				Mr.
+				<input bind:group={values.title} type="radio" value={"Mr."}/>
+			</label>
+			<label>
+				Ms.
+				<input bind:group={values.title} type="radio" value={"Ms."}/>
+			</label>
+			<label>
+				None
+				<input bind:group={values.title} type="radio" value={null}/>
+			</label>
 		</div>
 
 		<label for="firstName">First name</label>
@@ -88,12 +92,12 @@
 
 <style lang="scss">
 	.formContainer {
+		position: relative;
+		flex: 1;
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
 		min-width: 400px;
-		max-width: 40vw;
-		flex-shrink: 0;
 		padding: 1rem;
 		box-sizing: border-box;
 		text-align: start;

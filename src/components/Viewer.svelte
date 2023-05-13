@@ -19,9 +19,11 @@
 
 <style lang="scss">
 	.viewerContainer {
+		flex: 2;
 		align-items: center;
 		justify-content: center;
-		width: 100%;
+
+		min-width: 680px;
 
 		&__title {
 			margin: 0;

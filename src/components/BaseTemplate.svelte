@@ -42,19 +42,23 @@
 <style lang="scss">
 	.cardContainer {
 		position: relative;
-		aspect-ratio: 8.5/5.4;
 		transition: transform 0.6s;
 		transform-style: preserve-3d;
 		text-align: center;
 		backface-visibility: hidden;
 		-webkit-backface-visibility: hidden;
 
+		width: 600px;
+		aspect-ratio: 2;
+
 		&__side {
 			display: flex;
 			flex-direction: column;
 			width: 100%;
 			height: 100%;
-			border-radius: 1rem;
+
+			color: var(--text);
+			background: var(--background);
 
 			position: absolute;
 

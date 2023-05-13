@@ -40,7 +40,6 @@
 	}
 
 	.templateContainer {
-		width: 26.5rem;
 		background: transparent;
 		perspective: 1000px;
 		margin: 1rem;
