@@ -1,5 +1,4 @@
 <script>
-	// ALL THE VARIABLES AND IMPORTS HERE ARE NEEDED BY THE TEMPLATE AND CAN'T BE OMITTED
 	import BaseTemplate from "../BaseTemplate.svelte";
 
 	export const palettes = [{
@@ -85,16 +84,6 @@
 			align-items: center;
 			text-align: start;
 			padding: 1rem;
-
-			span {
-				display: block;
-				font-size: 20px;
-
-				strong {
-					font-size: 30px;
-					font-weight: normal;
-				}
-			}
 
 			&__name {
 				flex: .4;
