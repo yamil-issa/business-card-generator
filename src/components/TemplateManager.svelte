@@ -1,5 +1,7 @@
 <script>
 	import {createEventDispatcher} from "svelte";
+	import { jsPDF } from "jspdf";
+	import domtoimage from 'dom-to-image';
 
 	export let values;
 	export let templateComponent;
@@ -19,6 +21,50 @@
 		}
 	}
 
+	async function pdfExport() {
+
+	let pdf;
+  //front side
+  const content = document.getElementById('front');
+  const imgData = await domtoimage.toPng(content);
+
+  pdf = new jsPDF('p', 'mm', 'a4');
+  const imgProps = pdf.getImageProperties(imgData);
+  const pdfWidth = pdf.internal.pageSize.getWidth()/2;
+  const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+  //add the first image to the pdf file
+  pdf.addImage(imgData, 'PNG', 20, 20, pdfWidth, pdfHeight);
+
+  //back side
+  const content2 = document.getElementById('back');
+  const imgData2 = await domtoimage.toPng(content2);
+
+  const imgProps2 = pdf.getImageProperties(imgData2);
+  const pdfWidth2 = pdf.internal.pageSize.getWidth()/2;
+  const pdfHeight2 = (imgProps2.height * pdfWidth2) / imgProps2.width;
+
+  //add the second image to the pdf file
+  const canvas = document.createElement('canvas');
+  canvas.width = imgProps2.width;
+  canvas.height = imgProps2.height;
+  const ctx = canvas.getContext('2d');
+  const img = new Image();
+  img.onload = function() {
+    ctx.save();
+    ctx.translate(canvas.width, 0);
+    ctx.scale(-1, 1); // flip horizontally
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    ctx.restore();
+
+    pdf.addImage(canvas.toDataURL(), 'PNG', 20, pdf.internal.pageSize.getHeight() - pdfHeight2 - 20, pdfWidth2, pdfHeight2);
+
+    //download the pdf file
+    pdf.save('card.pdf');
+  };
+  img.src = imgData2;
+}
+
 	let flipped = false;
 </script>
 
@@ -28,7 +74,7 @@
 	</div>
 	<button on:click={() => flipped = !flipped}>* click to {flipped ? "unflip" : "flip"}! *</button>
 </div>
-
+<button on:click={pdfExport}>Exporter en PDF</button>
 <style lang="scss">
 	.templateManager {
 		display: flex;
