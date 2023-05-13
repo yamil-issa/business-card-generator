@@ -47,10 +47,8 @@
 		justify-content: space-between;
 		align-items: center;
 
-		height: 100%;
 		padding: 1rem;
 		gap: 1rem;
-
 
 		> :global(*) {
 			display: flex;

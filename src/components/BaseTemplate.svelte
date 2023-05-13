@@ -51,6 +51,17 @@
 		width: 600px;
 		aspect-ratio: 2;
 
+		:global(span) {
+			display: block;
+			font-size: 20px;
+
+			:global(strong) {
+				font-size: 30px;
+				font-weight: normal;
+				text-transform: capitalize;
+			}
+		}
+
 		&__side {
 			display: flex;
 			flex-direction: column;
