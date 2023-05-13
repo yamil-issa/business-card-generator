@@ -5,7 +5,10 @@
  */
 const templates = [
 	// {fileName: "example", description: "Example template"},
-	{fileName: "simplistic", description: "Simple but effective template"}
+	{fileName: "minimalist", description: "Simple but effective"},
+	{fileName: "bubbles", description: "Bubbly template (with QR code)"},
+	{fileName: "stripes", description: "Beautiful colored lines"},
+	{fileName: "squares", description: "Incredible squares (with QR code)"}
 ];
 
 export default templates;

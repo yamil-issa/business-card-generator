@@ -28,7 +28,7 @@
 			on:click={() => index = i}
 			aria-label={template.description}
 		>
-			Template {i + 1}
+			{template.fileName}
 		</button>
 	{/each}
 </div>
@@ -57,6 +57,7 @@
 			flex: 1;
 			max-width: 10rem;
 			border-radius: 5rem;
+			text-transform: capitalize;
 
 			&::after {
 				content: attr(aria-label);
