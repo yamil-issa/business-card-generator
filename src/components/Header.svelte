@@ -3,10 +3,9 @@
 </script>
 
 <header class="headerContainer">
-	<img alt="logo" class="headerContainer__logo" src="/logo-long.svg">
+	<img alt="Noobz Society" class="headerContainer__logo" src="/logo-long.svg">
 	<h1 class="headerContainer__title">Business Card Generator</h1>
-	<!--	TODO Mettre le projet en publique  -->
-	<a href="https://github.com/yamil-issa/business-card-generator" on:click={()=> alert("Le passer en publique !")}>
+	<a href="https://github.com/yamil-issa/business-card-generator" target="_blank">
 		<img alt="Go to our github" class="headerContainer__github" src={github}/>
 	</a>
 </header>

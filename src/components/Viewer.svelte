@@ -8,6 +8,10 @@
 	let templateComponent;
 	let templateColors;
 	let paletteIndex;
+
+	$: {
+
+	}
 </script>
 
 <div class="viewerContainer">

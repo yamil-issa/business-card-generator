@@ -7,7 +7,7 @@
 
 	// Get values from localStorage or use default values
 	let values = localStorage.getItem(STORAGE_KEY) ? JSON.parse(localStorage.getItem(STORAGE_KEY)) : {
-		title: "None",
+		title: null,
 		firstName: "John",
 		lastName: "Doe",
 		address: {

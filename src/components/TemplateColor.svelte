@@ -1,7 +1,12 @@
 <script>
 	export let templateColors;
 
-	export let paletteIndex;
+	const STORAGE_KEY = "palette";
+	export let paletteIndex = Math.max(Number(localStorage.getItem(STORAGE_KEY)), 0);
+
+	$: {
+		localStorage.setItem(STORAGE_KEY, String(paletteIndex));
+	}
 </script>
 
 {#if templateColors}
