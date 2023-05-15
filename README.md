@@ -9,8 +9,8 @@ This is a Svelte application that generates a business card based on user input.
 - `TemplateColor`: This component is responsible for rendering the color picker that allows the user to select from a list of predefined color palettes. It receives a `templateColors` prop, an array of color palettes to choose from, and a `paletteIndex` prop, an integer that determines which palette to use.
 
 ## How to Use
-
-To use this application, follow these steps:
+You can have a acces to the app by following this link : https://devoirs.rogeaux.com/eliottrogeaux/business-card-generator/
+To use this application locally, follow these steps:
 
 1. Clone the repository to your local machine.
 2. Navigate to the project directory in your terminal and run `npm install` to install the dependencies.
