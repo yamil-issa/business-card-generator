@@ -10,6 +10,7 @@ This is a Svelte application that generates a business card based on user input.
 
 ## How to Use
 You can have a acces to the app by following this link : https://devoirs.rogeaux.com/eliottrogeaux/business-card-generator/
+
 To use this application locally, follow these steps:
 
 1. Clone the repository to your local machine.
