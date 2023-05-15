@@ -101,7 +101,7 @@
 	{#if isDownloading}
 		<img class="templateManager__downloading" src={loading} alt="loading"/>
 	{:else}
-		<button class="templateContainer__download" on:click={pdfExport}>Exporter en PDF</button>
+		<button class="templateContainer__download" on:click={pdfExport}>Export to PDF</button>
 	{/if}
 </div>
 <style lang="scss">
